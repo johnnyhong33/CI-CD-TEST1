@@ -58,7 +58,7 @@ jobs:
         context: ./
         file: ./Dockerfile/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/3-tier:tomcat-latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/3-tier:latest
 
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
