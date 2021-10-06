@@ -32,9 +32,6 @@ jobs:
       with:
         name: war-package
         path: ./build/libs/*.war
-    
-    - name: Run ls -la
-      run: ls -la
 
 
   job-02:
