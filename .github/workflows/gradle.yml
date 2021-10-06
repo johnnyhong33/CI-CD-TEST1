@@ -10,7 +10,9 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  job-01:
+    name: WAR_Build
+
     runs-on: ubuntu-latest
 
     steps:
@@ -34,7 +36,17 @@ jobs:
     - name: Run ls -la
       run: ls -la
 
-    - uses: actions/download-artifact@v2
+
+  job-02:
+    name: Dockerization 
+  
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: War Download
+      uses: actions/download-artifact@v2
       with:
         name: war-package
         
@@ -63,6 +75,14 @@ jobs:
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
 
+
+  job-03:
+    name: OKE Deploy 
+  
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
 
     - name: 'Write Config & Key Files'
       run: |
