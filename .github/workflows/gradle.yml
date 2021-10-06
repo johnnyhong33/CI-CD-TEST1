@@ -35,7 +35,8 @@ jobs:
 
 
   job-02:
-    name: Dockerization 
+    name: Dockerization
+    needs: job-01 
   
     runs-on: ubuntu-latest
 
@@ -74,7 +75,8 @@ jobs:
 
 
   job-03:
-    name: OKE Deploy 
+    name: OKE Deploy
+    needs: [job-01, job-02] 
   
     runs-on: ubuntu-latest
 
